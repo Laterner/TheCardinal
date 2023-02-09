@@ -5,6 +5,12 @@ __pycache__/
 
 # C extensions
 *.so
+.vscode
+/*/.vscode
+build
+dist
+/toogle_icons/obj/
+/toogle_icons/bin/
 
 # Distribution / packaging
 .Python

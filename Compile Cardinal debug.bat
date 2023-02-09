@@ -1,0 +1,2 @@
+pyinstaller TheCardinal.py
+pause
