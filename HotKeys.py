@@ -19,9 +19,9 @@ def startExp():
     os.system("start explorer.exe")
 
 def ToggleIcon():
-    os.system("start explorer.exe")
+    pass
 
-def Screen_rotation(temp):
+def screen_rotation(temp):
     screen = rotatescreen.get_primary_display()
     if temp == "up":
         screen.set_landscape()
@@ -32,12 +32,14 @@ def Screen_rotation(temp):
     elif temp == "left":
         screen.set_portrait()
 
-
 def reg_hotkeys():
     keyboard.add_hotkey("ctrl+alt+t", lambda: console())
     # keyboard.add_hotkey("win+a", lambda: HotKeys.ToggleIcon())
-    keyboard.add_hotkey('ctrl+alt+up', lambda: Screen_rotation("up"))
-    keyboard.add_hotkey('ctrl+alt+down', lambda: Screen_rotation("down"))
-    keyboard.add_hotkey('ctrl+alt+left', lambda: Screen_rotation("left"))
-    keyboard.add_hotkey('ctrl+alt+right', lambda: Screen_rotation("right"))
-    keyboard.add_abbreviation("@emy", "ivantrofimov2001@yandex.ru")
+    keyboard.add_hotkey('ctrl+alt+up', lambda: screen_rotation("up"))
+    keyboard.add_hotkey('ctrl+alt+down', lambda: screen_rotation("down"))
+    keyboard.add_hotkey('ctrl+alt+left', lambda: screen_rotation("left"))
+    keyboard.add_hotkey('ctrl+alt+right', lambda: screen_rotation("right"))
+    keyboard.add_abbreviation("@em", "ivantrofimov2001@yandex.ru")
+
+if __name__ == "__main__":
+    screen_rotation('up')

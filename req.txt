@@ -1,0 +1,5 @@
+rotate-screen
+pyinstaller
+pyqt5
+keyboard
+watchdog

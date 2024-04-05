@@ -1,2 +1,2 @@
-pyinstaller TheCardinal.py
+pyinstaller -F TheCardinal.py
 pause

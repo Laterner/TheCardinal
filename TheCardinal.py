@@ -6,12 +6,12 @@ from TheCardinalsUI import *
 
 if __name__ == "__main__":
     import sys
-    TheWatcher = None #subprocess.Popen("TheWatcher.exe")
+    # TheWatcher = subprocess.Popen("py ./TheWatcher.exe")
 
     HotKeys.reg_hotkeys()
     
     app = QApplication(sys.argv)
-    # if app.exit:
+    # if app.exec:
     #     subprocess.Popen("notepad.exe")
     window = TheCardinalMainWindow()
     # window.show()

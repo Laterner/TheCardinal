@@ -22,6 +22,7 @@ from PyQt5.QtWidgets import (
     QStyle,
     qApp,
 )
+from toggle_icons import toggle_icons
 
 class SecondWindow(QWidget):
 
@@ -125,7 +126,6 @@ class TheCardinalMainWindow(QMainWindow):
 
         # Инициализируем QSystemTrayIcon
         self.tray_icon = QSystemTrayIcon(self)
-        # self.tray_icon.setIcon(self.style().standardIcon(QStyle.SP_ComputerIcon))
         self.tray_icon.setIcon(QIcon('./qwer.ico'))
         """
             Объявим и добавим действия для работы с иконкой системного трея
@@ -133,20 +133,30 @@ class TheCardinalMainWindow(QMainWindow):
             hide - скрыть окно
             exit - выход из программы
         """
+
         show_action = QAction("Show", self)
         quit_action = QAction("Exit", self)
         hide_action = QAction("Hide", self)
+        
         show_action.triggered.connect(self.show)
         hide_action.triggered.connect(self.hide)
         quit_action.triggered.connect(qApp.quit)
+        
         tray_menu = QMenu()
         tray_menu.addAction(show_action)
         tray_menu.addAction(hide_action)
         tray_menu.addAction(quit_action)
+
+        self.tray_icon.activated.connect(self.onTrayIconActivated)
         self.tray_icon.setContextMenu(tray_menu)
         self.tray_icon.show()
 
         # self.window2 = SecondWindow()
+
+    def onTrayIconActivated(self, reason):
+        if reason == QSystemTrayIcon.DoubleClick:
+            toggle_icons.toggle()
+            # print("d_clecked")
 
     # Переопределение метода closeEvent, для перехвата события закрытия окна
     # Окно будет закрываться только в том случае, если нет галочки в чекбоксе
@@ -178,3 +188,13 @@ class TheCardinalMainWindow(QMainWindow):
 
     def TWStatusChanged(self):
         self.TWStatus.text = ""
+
+if __name__ == "__main__":
+    import sys
+
+    app = QApplication(sys.argv)
+    # if app.exec:
+    #     subprocess.Popen("notepad.exe")
+    window = TheCardinalMainWindow()
+    # window.show()
+    sys.exit(app.exec())
